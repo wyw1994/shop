@@ -10,7 +10,7 @@ class AdminController extends BackendController{
     //初始化
     public function actionInit(){
         $admin=new Admin();
-        $admin->username="admin2";
+        $admin->username="admin123";
         $admin->password = '123456';
 //        $admin->password_hash=\yii::$app->security->generatePasswordHash($admin->password_hash);
         $admin->email='2251586313@qq.com';
@@ -25,6 +25,7 @@ class AdminController extends BackendController{
     public function actionAdd(){
         $model=new Admin(['scenario'=>Admin::SCENARIO_ADD]);
         if($model->load(\yii::$app->request->post())&&$model->validate()){
+            //var_dump($model->roles);exit;
             $authManager=\yii::$app->authManager;
             $model->save();
             if($model->roles){
